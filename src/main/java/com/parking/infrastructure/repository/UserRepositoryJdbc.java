@@ -40,4 +40,49 @@ public class UserRepositoryJdbc implements UserRepository {
             throw new RuntimeException("Failed to authenticate user", e);
         }
     }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        String sql = "SELECT id, username, password, role FROM users WHERE username = ?";
+        try (var connection = config.getConnection();
+             var stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            try (var rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return Optional.of(new User(
+                            rs.getInt("id"),
+                            rs.getString("username"),
+                            rs.getString("password"),
+                            Role.valueOf(rs.getString("role"))
+                    ));
+                }
+                return Optional.empty();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to query user", e);
+        }
+    }
+
+    @Override
+    public User save(String username, String password, Role role) {
+        String sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+        try (var connection = config.getConnection();
+             var stmt = connection.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            stmt.setString(3, role.name());
+            int affected = stmt.executeUpdate();
+            if (affected == 0) throw new RuntimeException("Creating user failed, no rows affected.");
+            try (var keys = stmt.getGeneratedKeys()) {
+                if (keys.next()) {
+                    int id = keys.getInt(1);
+                    return new User(id, username, password, role);
+                } else {
+                    throw new RuntimeException("Creating user failed, no ID obtained.");
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create user", e);
+        }
+    }
 }

@@ -17,9 +17,14 @@
 /home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/SceneNavigator.java
 /home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/View.java
 /home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/ui/AdminDashboardView.java
+/home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/ui/AdminLoginView.java
+/home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/ui/LandingView.java
 /home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/ui/LoginView.java
+/home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/ui/RegistrationView.java
+/home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/ui/RoleLoginView.java
 /home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/ui/TextFieldWithButton.java
 /home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/ui/UserDashboardView.java
+/home/nasiha/AP_Parking_Management/src/main/java/com/parking/presentation/ui/UserLoginView.java
 /home/nasiha/AP_Parking_Management/src/main/java/com/parking/usecase/AuthUseCase.java
 /home/nasiha/AP_Parking_Management/src/main/java/com/parking/usecase/ReservationUseCase.java
 /home/nasiha/AP_Parking_Management/src/main/java/com/parking/usecase/SlotUseCase.java

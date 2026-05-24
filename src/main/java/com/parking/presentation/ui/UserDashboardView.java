@@ -152,7 +152,7 @@ public class UserDashboardView implements View {
         logout.setStyle(sidebarButtonStyle(false, true));
         logout.setOnAction(e -> {
             navigator.context().logout();
-            navigator.show(new LoginView(navigator));
+            navigator.show(new LandingView(navigator));
         });
 
         sidebar.getChildren().addAll(brandRow, nav, spacer, logout);

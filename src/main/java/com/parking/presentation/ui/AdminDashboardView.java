@@ -135,7 +135,7 @@ public class AdminDashboardView implements View {
         logout.setStyle(sidebarButtonStyle(false, true));
         logout.setOnAction(e -> {
             navigator.context().logout();
-            navigator.show(new LoginView(navigator));
+            navigator.show(new LandingView(navigator));
         });
 
         sidebar.getChildren().addAll(brandRow, navGroup, spacer, logout);
@@ -162,7 +162,7 @@ public class AdminDashboardView implements View {
         miniLogout.setStyle("-fx-background-color: transparent; -fx-text-fill: #ef4444; -fx-font-weight: 700;");
         miniLogout.setOnAction(e -> {
             navigator.context().logout();
-            navigator.show(new LoginView(navigator));
+            navigator.show(new LandingView(navigator));
         });
 
         HBox topBar = new HBox(12, titleBlock, new Region(), profileChip, miniLogout);
