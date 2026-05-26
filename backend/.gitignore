@@ -1,0 +1,10 @@
+target/
+*.jar
+*.war
+*.class
+src/main/resources/application.properties
+.idea/
+*.iml
+.vscode/
+*.log
+spring-shell.log

@@ -1,52 +1,17 @@
-# Maven build output
-/target/
-
-# Logs
-*.log
-logs/
-
-# Environment and local config
-.env
-.env.*
-*.local
-local.properties
-
-# Sensitive app config variants
-application-local.properties
-application-secret.properties
-application-secrets.properties
-secrets.properties
-
-# Credentials and key material
-*.pem
-*.key
-*.p12
-*.pfx
-*.jks
-*.keystore
-*.crt
-*.cer
-*.der
-*.pkcs12
-
-# SSH/GPG files
-*.asc
-*.gpg
-id_rsa
-id_rsa.pub
-
-# Database dumps and backups
-*.sql.gz
-*.sql.zip
-*.dump
-*.bak
-*.backup
-
-# IDE/editor metadata that may contain local paths/tokens
+backend/target/
+backend/*.jar
+backend/*.war
+backend/src/main/resources/application.properties
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.production
 .idea/
 .vscode/
 *.iml
-
-# OS files
+*.class
 .DS_Store
 Thumbs.db
+*.log
+application-secrets.properties
