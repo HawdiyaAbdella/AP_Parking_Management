@@ -2,6 +2,7 @@ package com.smartparking.controller;
 
 import com.smartparking.dto.ReservationDto;
 import com.smartparking.dto.ReservationRequest;
+import com.smartparking.dto.PaymentRequest;
 import com.smartparking.dto.SlotDto;
 import com.smartparking.model.ParkingSlot;
 import com.smartparking.model.SlotStatus;
@@ -87,6 +88,33 @@ public class ParkingController {
         return ResponseEntity.ok(reservationService.releaseSlot(reservationId, username));
     }
 
+    @PostMapping("/pay")
+    public ResponseEntity<?> processPayment(
+            @RequestBody PaymentRequest paymentRequest,
+            Authentication authentication) {
+        try {
+            String username = authentication.getName();
+            ReservationDto result = reservationService.processPayment(
+                    paymentRequest.getReservationId(),
+                    username,
+                    paymentRequest.getPaymentMethod()
+            );
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                    .body(java.util.Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/bill/{reservationId}")
+    public ResponseEntity<?> getBill(@PathVariable Long reservationId) {
+        Authentication auth = SecurityContextHolder
+                .getContext().getAuthentication();
+        String username = auth.getName();
+        Object result = reservationService.calculatePayment(reservationId, username);
+        return ResponseEntity.ok(result);
+    }
+
     @GetMapping("/reservations/my")
     public ResponseEntity<List<ReservationDto>> getUserReservations() {
         String username = getCurrentUsername();
@@ -100,6 +128,12 @@ public class ParkingController {
         }
 
         return ResponseEntity.ok(reservationService.getAllReservations());
+    }
+
+    @PostMapping("/occupy/{reservationId}")
+    public ResponseEntity<ReservationDto> markAsOccupied(@PathVariable Long reservationId) {
+        String username = getCurrentUsername();
+        return ResponseEntity.ok(reservationService.markAsOccupied(reservationId, username));
     }
 
     private String getCurrentUsername() {

@@ -32,6 +32,8 @@ public class Reservation {
 
     private LocalDateTime endTime;
 
+    private LocalDateTime occupiedAt;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ReservationStatus status;
@@ -39,6 +41,10 @@ public class Reservation {
     private String vehiclePlate;
 
     private Double fee;
+
+    private String paymentMethod;
+
+    private Boolean paid;
 
     private LocalDateTime createdAt;
 

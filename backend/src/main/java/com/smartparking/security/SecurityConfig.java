@@ -41,7 +41,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().configurationSource(request -> {
             CorsConfiguration config = new CorsConfiguration();
-            config.setAllowedOrigins(List.of("http://localhost:3000"));
+            config.setAllowedOriginPatterns(List.of(
+                    "http://localhost:3000",
+                    "http://localhost:8080",
+                    "https://*.vercel.app",
+                    "https://*.railway.app",
+                    "*"
+            ));
             config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
             config.setAllowedHeaders(List.of("*"));
             config.setAllowCredentials(true);
@@ -50,8 +56,14 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/ws/**").permitAll()
-            .requestMatchers(HttpMethod.GET, "/api/parking/slots", "/api/parking/slots/available").permitAll()
+                    .requestMatchers("/api/parking/slots").permitAll()
+                    .requestMatchers("/ws/**").permitAll()
+                    .requestMatchers("/api/parking/bill/**").authenticated()
+                    .requestMatchers("/api/parking/occupy/**").authenticated()
+                    .requestMatchers("/api/parking/pay").authenticated()
+                    .requestMatchers("/api/parking/reserve").authenticated()
+                    .requestMatchers("/api/parking/cancel/**").authenticated()
+                    .requestMatchers("/api/parking/release/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

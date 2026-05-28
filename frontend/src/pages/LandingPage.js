@@ -368,7 +368,7 @@ const LandingPage = () => {
           <h1 style={headlineStyle} className="fade-up">
             <span style={headlineGoldStyle}>Smart Parking,</span>
             <br />
-            Reimagined.
+              Built for Every Driver.
           </h1>
           <p style={subheadlineStyle} className="fade-up">
             Reserve your spot before you arrive. Real-time availability. Zero frustration.

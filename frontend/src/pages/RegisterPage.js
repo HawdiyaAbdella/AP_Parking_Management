@@ -8,7 +8,6 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState('DRIVER');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -56,7 +55,6 @@ const RegisterPage = () => {
         username,
         email,
         password,
-        role,
       });
 
       const userData = {
@@ -225,27 +223,6 @@ const RegisterPage = () => {
     fontWeight: '600',
   };
 
-  const roleSelectorStyle = {
-    display: 'flex',
-    gap: '12px',
-    marginTop: '12px',
-  };
-
-  const roleButtonStyle = (isSelected) => ({
-    flex: 1,
-    padding: '12px',
-    background: isSelected ? 'var(--accent-gold)' : 'transparent',
-    color: isSelected ? 'var(--bg-primary)' : 'var(--text-secondary)',
-    border: `1px solid ${isSelected ? 'var(--accent-gold)' : 'var(--border-subtle)'}`,
-    borderRadius: 'var(--radius)',
-    fontWeight: '600',
-    fontSize: '13px',
-    cursor: 'pointer',
-    transition: 'var(--transition)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.05em',
-  });
-
   const submitButtonStyle = {
     width: '100%',
     padding: '14px',
@@ -409,26 +386,6 @@ const RegisterPage = () => {
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
-                </button>
-              </div>
-            </div>
-
-            <div style={formGroupStyle}>
-              <label style={labelStyle}>Account Type</label>
-              <div style={roleSelectorStyle}>
-                <button
-                  type="button"
-                  style={roleButtonStyle(role === 'DRIVER')}
-                  onClick={() => setRole('DRIVER')}
-                >
-                  Driver
-                </button>
-                <button
-                  type="button"
-                  style={roleButtonStyle(role === 'ADMIN')}
-                  onClick={() => setRole('ADMIN')}
-                >
-                  Admin
                 </button>
               </div>
             </div>

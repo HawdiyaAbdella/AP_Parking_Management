@@ -41,16 +41,13 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username already exists");
         }
 
-        Role role = Role.USER;
-        if (request.getRole() != null && request.getRole().equalsIgnoreCase("ADMIN")) {
-            role = Role.ADMIN;
-        }
-
+        // Always set new users to Role.USER
+        // Only DataInitializer can create ADMIN users
         User user = User.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .email(request.getEmail())
-                .role(role)
+                .role(Role.USER)
                 .build();
 
         userRepository.save(user);

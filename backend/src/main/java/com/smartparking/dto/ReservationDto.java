@@ -13,11 +13,15 @@ import java.time.LocalDateTime;
 @Builder
 public class ReservationDto {
     private Long id;
+    private Long reservationId;
     private String slotName;
     private String username;
     private String vehiclePlate;
     private String status;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private LocalDateTime occupiedAt;
     private Double fee;
+    private String paymentMethod;
+    private Boolean paid;
 }
