@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Radio, Lock, Wallet } from 'lucide-react'; 
 
 const LandingPage = () => {
   const [slots, setSlots] = useState([]);
@@ -444,7 +445,7 @@ const LandingPage = () => {
             </p>
           </div>
           <div style={featureVisualStyle}>
-            <div style={{ fontSize: '80px' }}>📡</div>
+            <Radio size={264} color="#aa930eff" strokeWidth={1.5} /> 
           </div>
         </div>
 
@@ -456,8 +457,8 @@ const LandingPage = () => {
             </p>
           </div>
           <div style={featureVisualStyle}>
-            <div style={{ fontSize: '80px' }}>🔒</div>
-          </div>
+    <Lock size={264} color="#aa930eff" strokeWidth={1.5} />
+  </div>
         </div>
 
         <div style={featureRowStyle(false)}>
@@ -468,7 +469,7 @@ const LandingPage = () => {
             </p>
           </div>
           <div style={featureVisualStyle}>
-            <div style={{ fontSize: '80px' }}>💰</div>
+           <Wallet size={264} color="#aa930eff" strokeWidth={1.5} />
           </div>
         </div>
       </section>
@@ -483,7 +484,7 @@ const LandingPage = () => {
 
       <footer style={footerStyle}>
         <div style={footerLogoStyle}>PARKWISE</div>
-        <div style={footerCopyStyle}>© 2025 ParkWise. All rights reserved.</div>
+        <div style={footerCopyStyle}>© 2026 ParkWise. All rights reserved.</div>
         <div style={footerLinksStyle}>
           <a href="#" style={footerLinkStyle}>Privacy</a>
           <a href="#" style={footerLinkStyle}>Terms</a>

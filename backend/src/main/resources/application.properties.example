@@ -1,20 +1,8 @@
-# Database
+server.port=8080
 spring.datasource.url=jdbc:mysql://localhost:3306/smart_parking?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
 spring.datasource.username=root
-spring.datasource.password=YOUR_MYSQL_PASSWORD_HERE
-
-# JPA
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.password=${DB_PASSWORD}
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
-
-# Server
-server.port=8080
-
-# JWT
-app.jwt.secret=MySuperSecretKeyForJWTTokenGeneration2024
+app.jwt.secret=${JWT_SECRET}
 app.jwt.expiration=86400000
-
-# WebSocket logging
-logging.level.org.springframework.web.socket=INFO
