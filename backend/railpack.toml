@@ -1,0 +1,5 @@
+[build]
+cmd = "mvn -DoutputFile=target/mvn-dependency-list.log -B -DskipTests clean dependency:list install -Pproduction"
+
+[env]
+JAVA_VERSION = "17"
