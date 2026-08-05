@@ -31,40 +31,39 @@ ParkWise lets users view live parking slot availability, reserve and release slo
 ## Architecture
 
 React (SPA)
-│ REST (Axios) + STOMP over WebSocket
-▼
+   │  REST (Axios) + STOMP over WebSocket
+   ▼
 Spring Boot API
-├── Security layer — JWT filter, role-based access
-├── Service layer — reservation logic, fee calculation
-├── Scheduler — auto-releases inactive slots every 15 min
-└── Data layer — Spring Data JPA → MySQL
+   ├── Security layer — JWT filter, role-based access
+   ├── Service layer — reservation logic, fee calculation
+   ├── Scheduler — auto-releases inactive slots every 15 min
+   └── Data layer — Spring Data JPA → MySQL
 
 
 ## Project Structure
 
 AP_Parking_Management/
-├── backend/ Spring Boot application
-│ ├── src/main/java/com/smartparking/
-│ │ ├── config/ WebSocket, Security, data init
-│ │ ├── controller/ REST API controllers
-│ │ ├── dto/ Data transfer objects
-│ │ ├── model/ JPA entities
-│ │ ├── repository/ Spring Data repositories
-│ │ ├── scheduler/ Auto-release scheduler
-│ │ ├── security/ JWT filter and utils
-│ │ └── service/ Business logic
-│ └── src/main/resources/
-│ ├── application.properties shared/base config
-│ ├── application-prod.properties production (env-var driven)
-│ └── application-local.properties local dev (gitignored)
-└── frontend/ React application
-└── src/
-├── api/ Axios instance
-├── components/ Navbar, shared UI
-├── context/ Auth context
-├── hooks/ WebSocket hook
-└── pages/ Landing, Login, Register, Dashboard
-
+├── backend/                          Spring Boot application
+│   ├── src/main/java/com/smartparking/
+│   │   ├── config/                   WebSocket, Security, data init
+│   │   ├── controller/                REST API controllers
+│   │   ├── dto/                       Data transfer objects
+│   │   ├── model/                     JPA entities
+│   │   ├── repository/                Spring Data repositories
+│   │   ├── scheduler/                 Auto-release scheduler
+│   │   ├── security/                  JWT filter and utils
+│   │   └── service/                   Business logic
+│   └── src/main/resources/
+│       ├── application.properties          shared/base config
+│       ├── application-prod.properties      production (env-var driven)
+│       └── application-local.properties     local dev (gitignored)
+└── frontend/                          React application
+    └── src/
+        ├── api/                       Axios instance
+        ├── components/                Navbar, shared UI
+        ├── context/                   Auth context
+        ├── hooks/                     WebSocket hook
+        └── pages/                     Landing, Login, Register, Dashboard
 
 ## Prerequisites
 
